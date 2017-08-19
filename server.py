@@ -17,6 +17,7 @@ class WebRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 "<html>"                                                                                                
             ]                                                                                                           
             message = '\r\n'.join(message_parts)                                                                        
+            print message
             # message = "New request arrived from %s:%d" % self.client_address                                          
             self.send_response(200)                                                                                     
             self.end_headers()                                                                                          
