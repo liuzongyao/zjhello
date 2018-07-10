@@ -1,0 +1,68 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app.alauda.io/uuid: 9275ed87-bf1c-4233-a6b9-b3de784eae01
+    service.alauda.io/uuid: bfa7e7fb-8037-4505-9b20-9f81452a2ba4
+  name: zjpublic-in
+  namespace: zjns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service.alauda.io/name: zjpublic-in
+      service.alauda.io/uuid: bfa7e7fb-8037-4505-9b20-9f81452a2ba4
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.alauda.io/name: zjpublic-in
+        app.alauda.io/uuid: 9275ed87-bf1c-4233-a6b9-b3de784eae01
+        service.alauda.io/name: zjpublic-in
+        service.alauda.io/uuid: bfa7e7fb-8037-4505-9b20-9f81452a2ba4
+    spec:
+      affinity: {}
+      containers:
+        image: index-staging.alauda.cn/testorg001/zjpublic:hello-world
+        imagePullPolicy: Always
+        name: zjpublic-in
+        resources: {}
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app.alauda.io/uuid: 9275ed87-bf1c-4233-a6b9-b3de784eae01
+    service.alauda.io/uuid: bfa7e7fb-8037-4505-9b20-9f81452a2ba4
+  name: zjpublic-in
+  namespace: zjns
+spec:
+  maxReplicas: 20
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: zjpublic-in
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    loadbalancer.alauda.io/bind: '[{"container_port":8080,"protocol":"http","name":"haproxy-52-81-0-20","port":80}]'
+  labels:
+    app.alauda.io/name: zjpublic-in1
+    app.alauda.io/uuid: 9275ed87-bf1c-4233-a6b9-b3de784eae01
+    service.alauda.io/name: zjpublic-in1
+    service.alauda.io/uuid: bfa7e7fb-8037-4505-9b20-9f81452a2ba4
+  name: zjpublic-in
+  namespace: zjns
+spec:
+  ports:
+  - name: tcp-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    service.alauda.io/name: zjpublic-in1
