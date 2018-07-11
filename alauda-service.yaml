@@ -2,30 +2,46 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: zjpublic-in1
+  name: nginx-app-1
+  labels:
+    aaa: nginx-app-1
 spec:
-  replicas:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: nginx-app-1
+
     spec:
       containers:
-        image: index-staging.alauda.cn/testorg001/zjpublic:latest
-        name: zjpublic-in1
----
+      - name: nginx-app-1
+        image: nginx:1.9.0
+        ports:
+        - containerPort: 80
+          name: web
+---          
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: zjpublic-in1
+  name: nginx-app-1
 spec:
   scaleTargetRef:
     kind: Deployment
-    name: zjpublic-in1
+    name: nginx-app-1
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: zjpublic-in1
+  labels:
+    run: nginx-app-1
+  name: nginx-app-1
+  namespace: default
 spec:
   ports:
-  - name: tcp-8080
-    port: 8080
+  - port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
+  selector:
+    run: nginx-app-1
+  sessionAffinity: None
+  type: ClusterIP
