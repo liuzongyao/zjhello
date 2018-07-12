@@ -39,5 +39,3 @@ spec:
   - port: 80
     protocol: TCP
     targetPort: 80
-  selector:
-    run: nginx-app-1
