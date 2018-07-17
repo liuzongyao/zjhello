@@ -1,6 +1,6 @@
 pre_ci_boot:
-    image: index-staging.alauda.cn/testorg001/zjpublic
-    tag: latest 
+    image: index.alauda.cn/alaudaorg/qaimages
+    tag: svn
 
 ci:
     - echo "<h1>hello logloglogLOg!</h1>" > aayml.txt
