@@ -4,5 +4,5 @@ pre_ci_boot:
 
 ci:
     - echo "<h1>hello logloglogLOg!</h1>" > aayml.txt
-    - cp aayml.txt $ALAUDACI_UPLOAD_DIR
+    - cp -r aayml.txt $ALAUDACI_UPLOAD_DIR
     - sleep 1
