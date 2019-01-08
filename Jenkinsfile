@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'all'
+    label 'master'
   }
   stages {
     stage('Checkout') {
@@ -19,7 +19,7 @@ pipeline {
       parallel {
         stage('Build') {
           steps {
-            echo "CI Build...CI Build...CI Build...CI Build...CI Build...CI Build...CI Build..." 
+            echo "CI Build...CI Build...CI Build...CI Build...CI Build...CI Build...CI Build11..." 
             sleep 10
             echo "CI Build1...CI Build1...CI Build1...CI Build1...CI Build1...CI Build1...CI Build1..." 
             sleep 10
