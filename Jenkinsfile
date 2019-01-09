@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'master'
+    label 'golang'
   }
   stages {
     stage('Checkout') {
