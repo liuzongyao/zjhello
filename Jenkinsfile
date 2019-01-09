@@ -1,11 +1,11 @@
 pipeline {
   agent {
-    label 'master'
+    label 'golang'
   }
   stages {
     stage('Checkout') {
       steps {
-        echo "Checkout…Checkout…Checkout…Checkout…Checkout…Checkorrrut…Checkout…Checkoutrrrrr…"
+        echo "1Checkout…Checkout…Checkout…Checkout…Checkorrrut…Checkout…Checkoutrrrrr…"
         sleep 10
         echo "Checkout2…Checkout2…Checkout2…Checkout2…Checkout…Checkout…Checkout…Checkout…"
         sleep 10
