@@ -5,14 +5,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        echo "1Checkout…Checkout…Checkout…Checkout…Checkorrrut…Checkout…Checkoutrrrrr…"
-        sleep 10
-        echo "Checkout2…Checkout2…Checkout2…Checkout2…Checkout…Checkout…Checkout…Checkout…"
-        sleep 10
-        echo "Checkout3…Checkout3…Checkout3…Checkout3…Checkout3…Checkout3…Checkout…Checkout…"
-        sleep 10
-        echo "Checkout4…Checkout4…Checkout4…Checkout4…Checkout4…Checkout4…Checkout…Checkout…"
-        sleep 10
+	echo "测试1111"
       }
     }
     stage('CI') {
