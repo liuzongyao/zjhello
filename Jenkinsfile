@@ -6,7 +6,6 @@ pipeline {
     stage('Checkout') {
       steps {
 	      echo "测试1111"
-	      echo "testv3.1~~~~~~~~~~~~"
       }
     }
     stage('CI') {
