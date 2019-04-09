@@ -120,7 +120,7 @@ pipeline {
           script {
             env.CODE_QUALITY_BINDING_NAME = "sonarbind"
             env.CODE_QUALITY_BINDING_NAMESPACE = "zjproject"
-            env.CODE_REPOSITORY_KEY = "https://github.com/jiaozhang1/zjhello".replace("https://", "").replace("https://", "").replaceAll("/", "-")
+            env.CODE_REPOSITORY_KEY = "https://github.com/jiaozhang1/zjhello".replace("http://", "").replace("https://", "").replaceAll("/", "-")
             env.CODE_REPOSITORY_NAME = "${CODE_REPOSITORY_KEY}"
             env.BRANCH = "*/master"
             if (env.BRANCH.equals("*/master")) {
