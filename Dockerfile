@@ -1,8 +1,4 @@
-FROM ubuntu:trusty                                                                                                      
-MAINTAINER ruicao ruicao@mathildetech.com                                                                               
-                                                                                                                        
-RUN apt-get update && \                                                                                                 
-    apt-get install -y python-pip                                                                                       
+FROM python:3.6-alpine3.8                                                                                                                                                                                                                                                                                                     
                                                                                                                             
 RUN pip install flake8                                                                                                  
                                                                                                                         
