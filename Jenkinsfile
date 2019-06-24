@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-	      echo "测试1111"
+	      echo "测试11111"
 	      echo "testv3.1~~~~~~~~~~~~"
       }
     }
